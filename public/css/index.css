@@ -1,0 +1,201 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Gaya dasar untuk section hero */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 559px; /* Tinggi untuk desktop */
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Gaya untuk gambar benner (ditampilkan di desktop) */
+.hero-content img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar menutupi area */
+    display: block; /* Tampilkan gambar benner di desktop */
+}
+
+/* Gaya untuk gambar kotak (ditampilkan di mobile) */
+.hero-content img.kotak {
+    display: none; /* Sembunyikan gambar kotak di desktop */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar menutupi area */
+}
+
+/* Gaya untuk teks overlay */
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    color: white; /* Sesuaikan warna teks */
+    width: 100%;
+}
+
+.text-overlay h1 {
+    font-size: 2.5rem; /* Sesuaikan ukuran font */
+    margin-bottom: 20px;
+}
+
+.container-button {
+    display: flex;
+
+    padding: 0 20px; /* Memberi jarak dari sisi kiri dan kanan */
+    width: 100%;
+    box-sizing: border-box; /* Memastikan padding tidak menambah lebar */
+}
+
+.container-button button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF; /* Warna tombol */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.container-button button:hover {
+    background-color: #0056b3; /* Warna tombol saat hover */
+}
+
+
+/* product */
+.product-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.product-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* 6 kolom di desktop */
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px;
+    text-align: left;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.old-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: gray;
+}
+
+.product-brand {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-size {
+    font-size: 12px;
+    color: #999;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #d9534f;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 372px; /* Tinggi untuk mobile */
+        text-align: center;
+    }
+
+    .hero-content img:first-child {
+        display: none; /* Sembunyikan gambar benner di mobile */
+    }
+
+    .hero-content img.kotak {
+        display: block; /* Tampilkan gambar kotak di mobile */
+    }
+
+    .text-overlay h1 {
+        font-size: 2rem; /* Sesuaikan ukuran font untuk mobile */
+    }
+
+    .container-button {
+        flex-direction: row; /* Tombol tetap sejajar horizontal */
+        justify-content: space-between; /* Tombol di pinggir kiri dan kanan */
+        padding: 0 10px; /* Jarak dari sisi kiri dan kanan di mobile */
+    }
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 produk per baris */
+    }
+}
+
