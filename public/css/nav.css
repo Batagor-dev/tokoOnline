@@ -51,9 +51,8 @@ header {
 }
 
 /* Logo */
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo  img{
+   height: 5rem;
 }
 
 /* Menu */
@@ -85,56 +84,6 @@ header {
 }
 
 
-/* Search Bar */
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: #f1f1f1;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    width: 40%;
-    transition: background 0.3s ease-in-out;
-}
-
-.search-bar i {
-    margin-right: 5px;
-    color: #777;
-}
-
-.search-bar input {
-    border: none;
-    background: transparent;
-    outline: none;
-    width: 100%;
-}
-
-#search-bar {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#search-bar.active {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#search-bar input {
-    width: 100%;
-    padding: 6px;
-    border: none;
-    outline: none;
-}
 
 /* Auth Buttons */
 .auth-buttons {

@@ -168,6 +168,23 @@ body {
     font-weight: bold;
 }
 
+/* Search Section */
+.search-section {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Styling Form Search */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -89,11 +89,9 @@ if (isset($_GET['id'])) {
                     <!-- Purchase and Add to Cart Buttons -->
                     <div class="product-detail-buttons">
                        <!-- Tautan WhatsApp otomatis dengan nomor yang diambil dari database -->
-<a href="https://wa.me/<?= $phone ?>?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda!" class="btn btn-buy">
-    Buy Now
-</a>
-
-                    
+                        <a href="https://wa.me/<?= $phone ?>?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda!" class="btn btn-buy">
+                         Buy Now
+                        </a> 
                     </div>
                 </div>
             </div>

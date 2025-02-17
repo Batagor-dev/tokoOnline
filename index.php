@@ -2,31 +2,29 @@
 session_start();
 require 'function/function.php';
 
-// Retrieve all products
-$products = getAllProductsSales($conn);
+// Ambil keyword pencarian dari URL jika ada
+$search_term = isset($_GET['search_term']) ? $_GET['search_term'] : '';
+
+// Ambil produk berdasarkan pencarian (jika ada)
+$products = searchProducts($conn, $search_term);
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Halaman Utama</title>
     <link rel="stylesheet" href="public/css/index.css">
-
-    <!-- font google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/coba.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script> <!-- Tambahkan Phosphor Icons -->
 </head>
 
 <body>
     <?php include 'public/layout/nav.php'; ?>
+
     <section class="hero-section">
         <div class="hero-content">
             <img src="public/img/benner.png" alt="">
@@ -37,14 +35,29 @@ $products = getAllProductsSales($conn);
         </div>
     </section>
 
+    <!-- Form Search dengan Ikon -->
+    <section class="search-section">
+        <div class="container">
+            <form action="index.php" method="GET" class="search-form">
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" name="search_term" id="search-input" placeholder="Cari produk..." 
+                        value="<?= htmlspecialchars($search_term, ENT_QUOTES, 'UTF-8') ?>">
+                </div>
+                <button type="submit">Cari</button>
+            </form>
+        </div>
+    </section>
+
     <section class="product-section">
         <div class="product-container">
-            <?php if (count($products) > 0): ?>
+            <?php if (!empty($products)): ?>
                 <?php foreach ($products as $product): ?>
                     <div class="product-card">
-                     <a href="coba.php?id=<?= $product['id'] ?>" class="product-link">
-                            <img src="public/uploads/<?= $product['image'] ?>"
-                                alt="<?= htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8') ?>" class="product-image">
+                        <a href="coba.php?id=<?= $product['id'] ?>" class="product-link">
+                            <img src="public/uploads/<?= $product['image'] ?>" 
+                                alt="<?= htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8') ?>" 
+                                class="product-image">
                             <div class="product-info">
                                 <p class="product-price">Rp <?= number_format($product['price'], 2) ?></p>
                                 <p class="product-brand"><?= htmlspecialchars($product['name']) ?></p>
@@ -54,7 +67,7 @@ $products = getAllProductsSales($conn);
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <div class="text-center">Belum ada produk tersedia.</div>
+                <div class="text-center">Belum ada produk ditemukan.</div>
             <?php endif ?>
         </div>
     </section>

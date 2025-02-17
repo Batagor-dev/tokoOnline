@@ -338,31 +338,22 @@ function getSalesBalance($conn, $sales_id)
     }
 }
 
-function searchProducts($search_term, $category = null)
-{
-    global $conn;
-
-    // Escape the search term to prevent SQL injection
+function searchProducts($conn, $search_term) {
+    // Escape string untuk menghindari SQL Injection
     $search_term = mysqli_real_escape_string($conn, $search_term);
 
-    // Query dasar untuk mencari produk
+    // Query untuk mencari produk berdasarkan nama
     $query = "SELECT * FROM products WHERE name LIKE ?";
-    $params = ["%" . $search_term . "%"];
-
-    // Jika kategori disediakan, tambahkan ke query
-    if ($category) {
-        $query .= " AND category = ?";
-        $params[] = $category;
-    }
-
-    // Prepare and execute the query
     $stmt = $conn->prepare($query);
-    $stmt->bind_param(str_repeat("s", count($params)), ...$params);
+    $search_term = "%$search_term%";
+    $stmt->bind_param("s", $search_term);
     $stmt->execute();
-
-    // Return the results
-    return $stmt->get_result();
+    
+    // Ambil hasil query
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
 }
+
 function getProductByIdProduct($conn, $id)
 {
     // Make sure to prepare and bind parameters to prevent SQL injection

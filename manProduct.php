@@ -1,5 +1,6 @@
 <?php
 session_start();
+require  "function/function.php";
 $conn = mysqli_connect("localhost", "root", "", "toko_online");
 
 if (!$conn) {
@@ -15,6 +16,12 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('s', $gender);
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Ambil keyword pencarian dari URL jika ada
+$search_term = isset($_GET['search_term']) ? $_GET['search_term'] : '';
+
+// Ambil produk berdasarkan pencarian (jika ada)
+$products = searchProducts($conn, $search_term);
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +33,27 @@ $result = $stmt->get_result();
     <title>Daftar Produk</title>
     <link rel="stylesheet" href="public/css/women.css">
     <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/coba.css">
 </head>
 
 <body>
     <?php include 'public/layout/nav.php'; ?>
-    <h2>Produk dengan Gender: <?= htmlspecialchars($gender) ?></h2>
+
+     <!-- Form Search dengan Ikon -->
+     <section class="search-section">
+        <div class="container">
+            <form action="index.php" method="GET" class="search-form">
+                <div class="search-box">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" name="search_term" id="search-input" placeholder="Cari produk..." 
+                        value="<?= htmlspecialchars($search_term, ENT_QUOTES, 'UTF-8') ?>">
+                </div>
+                <button type="submit">Cari</button>
+            </form>
+        </div>
+    </section>
+
+
     <section class="product-section">
         <div class="product-container">
             <?php if ($result->num_rows > 0): ?>

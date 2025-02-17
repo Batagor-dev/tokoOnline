@@ -14,7 +14,7 @@
 
         <div class="container">
             <!-- Logo -->
-            <div class="logo">LOGO</div>
+            <div class="logo"><img src="public/img/logo.png" alt=""></div>
 
             <!-- Search Bar -->
             <!-- <div class="search-bar">
@@ -40,7 +40,7 @@
                 <li><a href="womenProduct.php">Wanita</a></li>
                 <li><a href="manProduct.php ">Pria</a></li>
                 <li><a href="childProduct.php">Anak</a></li>
-                <li><a href="salesPage.php">Sales</a></li>
+                <li><a href="view/auth/login.php">Sales</a></li>
             </ul>
 
             <!-- icons -->
@@ -59,7 +59,7 @@
                 <li><a href="womenProduct.php">Wanita</a></li>
                 <li><a href="manProduct.php ">Pria</a></li>
                 <li><a href="childProduct.php">Anak</a></li>
-                <li><a href="salesPage.php">Sales</a></li>
+                <li><a href="view/auth/login.php">Sales</a></li>
                 <li> <a href="view/auth/login.php" class="login">Login</a></li>
                 <li><a href="view/auth/login.php" class="signup">Sign up</a></li>
             </ul>
